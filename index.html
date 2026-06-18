@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MonetAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA 1: Landing -->
+  <div id="tela-landing">
+    <header>
+      <div class="logo">MonetAI</div>
+    </header>
+    <main>
+      <h1>Seu dinheiro merece trabalhar <span>por você.</span></h1>
+      <p>Assistente de investimentos com inteligência artificial — em português simples.</p>
+      <button id="btn-comecar">Começar agora</button>
+    </main>
+  </div>
+
+  <!-- TELA 2: Onboarding -->
+  <div id="tela-onboarding" class="escondido">
+    <header>
+      <div class="logo">MonetAI</div>
+      <div class="ob-progresso">
+        <div class="ob-passo ativo" id="passo-1"></div>
+        <div class="ob-passo" id="passo-2"></div>
+        <div class="ob-passo" id="passo-3"></div>
+      </div>
+    </header>
+
+    <div class="ob-tela" id="ob-1">
+      <div class="ob-numero">1 DE 3</div>
+      <h2>Você já investiu alguma vez?</h2>
+      <p>Isso define como a MAI vai conversar com você.</p>
+      <div class="ob-opcoes">
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'exp','nunca')">
+          <div class="ob-opcao-icon">🌱</div>
+          <div><div class="ob-opcao-titulo">Nunca investi</div><div class="ob-opcao-sub">Quero entender do zero</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'exp','tentei')">
+          <div class="ob-opcao-icon">🔍</div>
+          <div><div class="ob-opcao-titulo">Já tentei mas parei</div><div class="ob-opcao-sub">Tive dificuldade em continuar</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'exp','invisto')">
+          <div class="ob-opcao-icon">📈</div>
+          <div><div class="ob-opcao-titulo">Já invisto regularmente</div><div class="ob-opcao-sub">Quero ir mais fundo</div></div>
+        </div>
+      </div>
+      <button class="btn-proximo" onclick="proximaPergunta(2)">Continuar →</button>
+    </div>
+
+    <div class="ob-tela escondido" id="ob-2">
+      <div class="ob-numero">2 DE 3</div>
+      <h2>Quanto consegue guardar por mês?</h2>
+      <p>Vamos mostrar estratégias que cabem no seu bolso real.</p>
+      <div class="ob-opcoes">
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'valor','menos100')">
+          <div class="ob-opcao-icon">💰</div>
+          <div><div class="ob-opcao-titulo">Menos de R$100</div><div class="ob-opcao-sub">Pequeno, mas consistente</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'valor','100-500')">
+          <div class="ob-opcao-icon">💵</div>
+          <div><div class="ob-opcao-titulo">R$100 a R$500</div><div class="ob-opcao-sub">Já dá pra diversificar</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'valor','500mais')">
+          <div class="ob-opcao-icon">💎</div>
+          <div><div class="ob-opcao-titulo">R$500 ou mais</div><div class="ob-opcao-sub">Vamos trabalhar esse capital</div></div>
+        </div>
+      </div>
+      <button class="btn-proximo" onclick="proximaPergunta(3)">Continuar →</button>
+    </div>
+
+    <div class="ob-tela escondido" id="ob-3">
+      <div class="ob-numero">3 DE 3</div>
+      <h2>Qual é seu maior objetivo?</h2>
+      <p>A MAI vai priorizar dicas com base nisso.</p>
+      <div class="ob-opcoes">
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'obj','reserva')">
+          <div class="ob-opcao-icon">🛡️</div>
+          <div><div class="ob-opcao-titulo">Reserva de emergência</div><div class="ob-opcao-sub">Segurança antes de qualquer coisa</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'obj','renda')">
+          <div class="ob-opcao-icon">💸</div>
+          <div><div class="ob-opcao-titulo">Renda extra todo mês</div><div class="ob-opcao-sub">Quero dinheiro caindo na conta</div></div>
+        </div>
+        <div class="ob-opcao" onclick="selecionarOpcao(this,'obj','patrimonio')">
+          <div class="ob-opcao-icon">🚀</div>
+          <div><div class="ob-opcao-titulo">Crescer meu patrimônio</div><div class="ob-opcao-sub">Pensar no longo prazo</div></div>
+        </div>
+      </div>
+      <button class="btn-proximo" onclick="finalizarOnboarding()">Abrir MonetAI →</button>
+    </div>
+  </div>
+
+  <!-- TELA 3: Dashboard -->
+  <div id="tela-dashboard" class="escondido">
+    <header class="dash-header">
+      <div class="logo">MonetAI</div>
+      <div class="dash-header-right">
+        <div class="mercado-status"><div class="status-dot"></div>Mercado aberto</div>
+        <div class="avatar-hdr">EU</div>
+      </div>
+    </header>
+
+    <div class="dashboard">
+
+      <!-- Boas vindas -->
+      <div class="welcome-card" id="welcome-card">
+        <div class="welcome-text">
+          <h2 id="welcome-titulo">Bem-vindo ao MonetAI 👋</h2>
+          <p id="welcome-sub">A MAI está pronta para te ajudar. Clique no botão verde no canto inferior direito para conversar.</p>
+        </div>
+        <button class="welcome-close" onclick="document.getElementById('welcome-card').style.display='none'">×</button>
+      </div>
+
+      <!-- Cards de mercado -->
+      <div class="secao-titulo">Mercado hoje</div>
+      <div class="mercado-cards">
+        <div class="mercado-card">
+          <div class="mercado-label">Ibovespa</div>
+          <div class="mercado-valor" id="ibov">131.420</div>
+          <div class="mercado-var up">▲ +0.8%</div>
+        </div>
+        <div class="mercado-card">
+          <div class="mercado-label">Dólar</div>
+          <div class="mercado-valor">R$ 5,14</div>
+          <div class="mercado-var down">▼ -0.3%</div>
+        </div>
+        <div class="mercado-card">
+          <div class="mercado-label">Selic</div>
+          <div class="mercado-valor">14,50%</div>
+          <div class="mercado-var neutro">ao ano</div>
+        </div>
+        <div class="mercado-card">
+          <div class="mercado-label">Bitcoin</div>
+          <div class="mercado-valor">R$ 548k</div>
+          <div class="mercado-var up">▲ +2.1%</div>
+        </div>
+      </div>
+
+      <!-- Ações em destaque -->
+      <div class="secao-titulo">Ações em destaque</div>
+      <div class="acoes-lista">
+        <div class="acao-card" onclick="perguntarSobreAtivo('PETR4','Petrobras')">
+          <div class="acao-icon" style="background:rgba(5,212,154,0.15);color:#05d49a">PT</div>
+          <div class="acao-info">
+            <div class="acao-ticker">PETR4</div>
+            <div class="acao-nome">Petrobras</div>
+          </div>
+          <div class="acao-direita">
+            <div class="acao-preco">R$ 38,72</div>
+            <div class="acao-var up">▲ +3.2%</div>
+          </div>
+        </div>
+        <div class="acao-card" onclick="perguntarSobreAtivo('VALE3','Vale S.A.')">
+          <div class="acao-icon" style="background:rgba(245,200,66,0.15);color:#f5c842">VL</div>
+          <div class="acao-info">
+            <div class="acao-ticker">VALE3</div>
+            <div class="acao-nome">Vale S.A.</div>
+          </div>
+          <div class="acao-direita">
+            <div class="acao-preco">R$ 62,40</div>
+            <div class="acao-var up">▲ +1.1%</div>
+          </div>
+        </div>
+        <div class="acao-card" onclick="perguntarSobreAtivo('ITUB4','Itaú Unibanco')">
+          <div class="acao-icon" style="background:rgba(255,68,102,0.15);color:#ff4466">IT</div>
+          <div class="acao-info">
+            <div class="acao-ticker">ITUB4</div>
+            <div class="acao-nome">Itaú Unibanco</div>
+          </div>
+          <div class="acao-direita">
+            <div class="acao-preco">R$ 34,15</div>
+            <div class="acao-var down">▼ -0.7%</div>
+          </div>
+        </div>
+        <div class="acao-card" onclick="perguntarSobreAtivo('MXRF11','Maxi Renda FII')">
+          <div class="acao-icon" style="background:rgba(77,159,255,0.15);color:#4d9fff">MX</div>
+          <div class="acao-info">
+            <div class="acao-ticker">MXRF11</div>
+            <div class="acao-nome">Maxi Renda FII</div>
+          </div>
+          <div class="acao-direita">
+            <div class="acao-preco">R$ 10,32</div>
+            <div class="acao-var up">▲ +0.4%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards educativos -->
+      <div class="secao-titulo">Aprenda enquanto investe</div>
+      <div class="edu-cards">
+        <div class="edu-card" onclick="perguntaRapidaDash('O que é uma ação e como funciona?')">
+          <div class="edu-icon">📊</div>
+          <div class="edu-titulo">O que é uma ação?</div>
+          <div class="edu-sub">Entenda como funciona ser sócio de uma empresa</div>
+        </div>
+        <div class="edu-card" onclick="perguntaRapidaDash('O que são FIIs e como investir neles?')">
+          <div class="edu-icon">🏢</div>
+          <div class="edu-titulo">O que são FIIs?</div>
+          <div class="edu-sub">Receba renda mensal sem comprar um imóvel</div>
+        </div>
+        <div class="edu-card" onclick="perguntaRapidaDash('Como a taxa Selic afeta meus investimentos?')">
+          <div class="edu-icon">🏦</div>
+          <div class="edu-titulo">O que é a Selic?</div>
+          <div class="edu-sub">A taxa que afeta todos os seus investimentos</div>
+        </div>
+        <div class="edu-card" onclick="perguntaRapidaDash('O que é renda fixa e renda variável?')">
+          <div class="edu-icon">⚖️</div>
+          <div class="edu-titulo">Renda fixa vs variável</div>
+          <div class="edu-sub">Qual é a diferença e qual escolher</div>
+        </div>
+        <div class="edu-card" onclick="perguntaRapidaDash('Como começar a investir com pouco dinheiro no Brasil?')">
+          <div class="edu-icon">🌱</div>
+          <div class="edu-titulo">Começar com pouco</div>
+          <div class="edu-sub">É possível investir com menos de R$100</div>
+        </div>
+        <div class="edu-card" onclick="perguntaRapidaDash('O que é o Tesouro Direto e como funciona?')">
+          <div class="edu-icon">🏛️</div>
+          <div class="edu-titulo">Tesouro Direto</div>
+          <div class="edu-sub">Empreste dinheiro ao governo e receba juros</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTÃO FLUTUANTE MAI -->
+  <div id="mai-fab" class="escondido" onclick="toggleChat()">
+    <span id="fab-icon">💬</span>
+  </div>
+
+  <!-- POPUP CHAT MAI -->
+  <div id="mai-popup" class="escondido">
+    <div class="popup-header">
+      <div class="popup-info">
+        <div class="avatar mai">MAI</div>
+        <div>
+          <div class="popup-nome">MAI</div>
+          <div class="popup-status"><div class="status-dot"></div>online</div>
+        </div>
+      </div>
+      <button class="popup-fechar" onclick="toggleChat()">×</button>
+    </div>
+    <div class="popup-mensagens" id="mensagens"></div>
+    <div class="popup-rapidas" id="popup-rapidas">
+      <button class="pergunta-rapida" onclick="perguntaRapida(this)">O que é uma ação?</button>
+      <button class="pergunta-rapida" onclick="perguntaRapida(this)">Como começar?</button>
+      <button class="pergunta-rapida" onclick="perguntaRapida(this)">O que são FIIs?</button>
+    </div>
+    <div class="popup-input">
+      <input type="text" id="input-usuario" placeholder="Pergunte à MAI..." />
+      <button id="btn-enviar">➤</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
