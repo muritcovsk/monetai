@@ -45,7 +45,8 @@ app.post('/api/cadastro', async (req, res) => {
     res.json({ token, nome: novoUsuario.nome, perfil: novoUsuario.perfil });
 
   } catch (erro) {
-    res.status(500).json({ erro: 'Erro ao criar conta' });
+    console.error('Erro cadastro:', erro.message);
+    res.status(500).json({ erro: erro.message });
   }
 });
 
