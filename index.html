@@ -27,7 +27,10 @@
         <h2>Criar conta</h2>
         <input type="text" id="cad-nome" placeholder="Seu nome" class="auth-input">
         <input type="email" id="cad-email" placeholder="Seu email" class="auth-input">
-        <input type="password" id="cad-senha" placeholder="Crie uma senha" class="auth-input">
+        <div class="senha-wrap">
+  <input type="password" id="cad-senha" placeholder="Crie uma senha" class="auth-input">
+  <span class="ver-senha" onclick="toggleSenha('cad-senha', this)">👁</span>
+</div>
         <button class="auth-btn principal" onclick="fazerCadastro()">Criar conta</button>
         <p class="auth-erro" id="cad-erro"></p>
         <p class="auth-link" onclick="mostrarTela('inicial')">← Voltar</p>
@@ -36,7 +39,10 @@
       <div id="auth-login" class="escondido">
         <h2>Entrar</h2>
         <input type="email" id="login-email" placeholder="Seu email" class="auth-input">
-        <input type="password" id="login-senha" placeholder="Sua senha" class="auth-input">
+        <div class="senha-wrap">
+  <input type="password" id="login-senha" placeholder="Sua senha" class="auth-input">
+  <span class="ver-senha" onclick="toggleSenha('login-senha', this)">👁</span>
+</div>
         <button class="auth-btn principal" onclick="fazerLogin()">Entrar</button>
         <p class="auth-erro" id="login-erro"></p>
         <p class="auth-link" onclick="mostrarTela('inicial')">← Voltar</p>

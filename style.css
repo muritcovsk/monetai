@@ -362,3 +362,27 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .auth-link:hover {
   color: var(--green);
 }
+.senha-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.senha-wrap .auth-input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.ver-senha {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.ver-senha:hover {
+  opacity: 1;
+}
