@@ -261,3 +261,104 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .pergunta-rapida { font-size: 14px; }
 #input-usuario { font-size: 16px; }
 #btn-enviar { font-size: 20px; }
+/* ── TELA AUTH ── */
+#tela-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-box .ob-logo {
+  margin-bottom: 32px;
+}
+
+#auth-inicial, #auth-cadastro, #auth-login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#auth-inicial h2, #auth-cadastro h2, #auth-login h2 {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.auth-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.auth-input:focus {
+  border-color: var(--green);
+}
+
+.auth-input::placeholder {
+  color: var(--muted);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.auth-btn:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.auth-btn.principal {
+  background: var(--green);
+  color: #060810;
+  border: none;
+}
+
+.auth-btn.secundario {
+  color: var(--muted);
+  border: none;
+}
+
+.auth-erro {
+  color: var(--red);
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+}
+
+.auth-link {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.auth-link:hover {
+  color: var(--green);
+}

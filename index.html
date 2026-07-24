@@ -8,6 +8,42 @@
 </head>
 <body>
 
+  <!-- TELA 0: Auth -->
+  <div id="tela-auth">
+    <div class="auth-box">
+      <div class="ob-logo">
+        <div class="ob-logo-icon">₿</div>
+        <div class="ob-logo-text">Monet<span>AI</span></div>
+      </div>
+
+      <div id="auth-inicial">
+        <h2>Como você quer continuar?</h2>
+        <button class="auth-btn principal" onclick="mostrarTela('cadastro')">Criar conta</button>
+        <button class="auth-btn" onclick="mostrarTela('login')">Já tenho conta</button>
+        <button class="auth-btn secundario" onclick="continuarSemConta()">Continuar sem conta</button>
+      </div>
+
+      <div id="auth-cadastro" class="escondido">
+        <h2>Criar conta</h2>
+        <input type="text" id="cad-nome" placeholder="Seu nome" class="auth-input">
+        <input type="email" id="cad-email" placeholder="Seu email" class="auth-input">
+        <input type="password" id="cad-senha" placeholder="Crie uma senha" class="auth-input">
+        <button class="auth-btn principal" onclick="fazerCadastro()">Criar conta</button>
+        <p class="auth-erro" id="cad-erro"></p>
+        <p class="auth-link" onclick="mostrarTela('inicial')">← Voltar</p>
+      </div>
+
+      <div id="auth-login" class="escondido">
+        <h2>Entrar</h2>
+        <input type="email" id="login-email" placeholder="Seu email" class="auth-input">
+        <input type="password" id="login-senha" placeholder="Sua senha" class="auth-input">
+        <button class="auth-btn principal" onclick="fazerLogin()">Entrar</button>
+        <p class="auth-erro" id="login-erro"></p>
+        <p class="auth-link" onclick="mostrarTela('inicial')">← Voltar</p>
+      </div>
+    </div>
+  </div>
+
   <!-- TELA 1: Landing -->
   <div id="tela-landing">
     <header>
